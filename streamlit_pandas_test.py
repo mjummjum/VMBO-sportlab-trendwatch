@@ -22,13 +22,13 @@ create_data = {"organisation": "multiselect",
                 "media_class": "multiselect",
                 "date": "multiselect",
                 "short_link": "multiselect",
-                "scope": "multiselect",
-                "focus": "multiselect",
-                "type": "multiselect",
+                "scope_lbl": "multiselect",
+                "focus_lbl": "multiselect",
+                "type_lbl": "multiselect",
                 "exclude": "multiselect"}
 
 
-all_widgets = sp.create_widgets(df, create_data, ignore_columns=["description","webtext","webtext_wordcount","title","link",'timestamp'])
+all_widgets = sp.create_widgets(df, create_data, ignore_columns=["description","webtext","webtext_wordcount","title","link",'timestamp','scope','focus','type'])
                                                                 
 res = sp.filter_df(df, all_widgets)
 
@@ -115,7 +115,7 @@ with elements("dashboard"):
             # Streamlit Elements includes 45 dataviz components powered by Nivo.
 
             #DATA = res.webtext_wordcount.to_dict('records')
-            DATA = res[['organisation','scope','focus','type','count','pagerank']].groupby('organisation').mean().sort_values(by=['count','pagerank'], ascending = [False,True]).dropna().head(5).T[:3].reset_index()
+            DATA = res[['organisation','scope','focus','type','count','pagerank','visibility_score']].groupby('organisation').mean().sort_values(by='visibility_score', ascending = False).dropna().head(5).T[:3].reset_index()
             #print(DATA)
             DATA55 = [
                 { "taste": "fruity", "chardonay": 93, "carmenere": 61, "syrah": 114 },
