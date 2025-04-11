@@ -4,3 +4,4 @@ plotly==5.24.1
 streamlit==1.38.0
 streamlit_elements==0.1.0
 streamlit_navigation_bar==3.3.0
+streamlit-pandas==0.0.9
