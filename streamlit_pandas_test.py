@@ -68,7 +68,7 @@ try:
     website_tekst = shorten_text(unique_df['webtext'].values[1],300)
     for key in dict_bold.keys():
         website_tekst = website_tekst.replace(key, dict_bold[key])
-    st.succes(website_tekst.replace(". ",".  \n"))
+    st.success(website_tekst.replace(". ",".  \n"))
 except:
     st.warning("geen tekst beschikbaar voor deze link")
     
@@ -95,7 +95,7 @@ with elements("dashboard"):
 
     layout = [
         # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-        dashboard.Item("first_item", 0, 0, 2, 2),
+        dashboard.Item("first_item", 0, 0, 4, 3),
         dashboard.Item("second_item", 0, 2, 4, 2, isDraggable=True, moved=False),
         dashboard.Item("third_item", 0, 2, 4, 2, isResizable=True),
         dashboard.Item("fourth_item", 0, 4, 4, 4, isResizable=True)
@@ -115,7 +115,7 @@ with elements("dashboard"):
             # Streamlit Elements includes 45 dataviz components powered by Nivo.
 
             #DATA = res.webtext_wordcount.to_dict('records')
-            DATA = res[['organisation','scope','focus','type','count','pagerank']].groupby('organisation').mean().sort_values(by=['count','pagerank'], ascending = [False,True]).dropna().head(6).T[:3].reset_index()
+            DATA = res[['organisation','scope','focus','type','count','pagerank']].groupby('organisation').mean().sort_values(by=['count','pagerank'], ascending = [False,True]).dropna().head(5).T[:3].reset_index()
             #print(DATA)
             DATA55 = [
                 { "taste": "fruity", "chardonay": 93, "carmenere": 61, "syrah": 114 },
